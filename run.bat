@@ -1,1 +1,1 @@
-py -W ignore C:\Users\Administrator\Desktop\ÍøÂçÅÀ³æ\2kxs.py
+py -W ignore C:\Users\Administrator\Documents\GitHub\python\2kxs.py

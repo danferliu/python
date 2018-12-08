@@ -4,6 +4,8 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
+urllib3.disable_warnings()
+
 def save_to_file(file_name, contents):
     fh = open(file_name, 'a',encoding='utf-8')
     fh.write(contents)
@@ -17,12 +19,16 @@ while urlNext != '/book/97286/':
     urlBas = 'https://m.fpzw.com'
     url = urlBas + urlNext
     #print (url)
-    http = urllib3.PoolManager()
+
+    #try:
+    #    r.raise_for_status()
+    #except:
+    #    print('---url error---')
+    #    break
+
     
-    try:
-        url.raise_for_status()
-    except:
-        print('---error---')
+    http = urllib3.PoolManager()
+
     r = http.request('GET',url)
     soup = BeautifulSoup(r.data, "html.parser")
     body = soup.body
@@ -35,18 +41,19 @@ while urlNext != '/book/97286/':
     urlNexta = body.find('a',id = 'pb_next')
     mulu = body.find('a',id = 'pb_mulu')
     urlNext = urlNexta.get('href')
-    print ('开始'+ title_1)
+    print ('beging'+ title_1)
     #print (urlNext)
-    save_to_file('抗日之特战兵王5.txt',title_1)
+    save_to_file('5.txt',title_1)
     
 
     textAll = body.find('div',id = 'nr1').text
-    save_to_file('抗日之特战兵王5.txt',textAll)
+    save_to_file('5.txt',textAll)
     
     
     #print (soup.prettify)
-    print (title_1 + '结束')
-    time.sleep(35)
+    print (title_1 + 'end')
+    r.release_conn()
+    time.sleep(5)
     #print (textAll)
     
     
