@@ -1,4 +1,4 @@
-﻿import time
+import time
 import urllib3
 import requests
 import re
@@ -13,9 +13,9 @@ def save_to_file(file_name, contents):
     fh.close()
     return 'success'
 
-urlNext = '/book/97286/25517067.html'
+urlNext = '/book/102237/21609122.html'
    
-while urlNext != '/book/97286/':
+while urlNext != '/book/102237/':
     urlBas = 'https://m.fpzw.com'
     url = urlBas + urlNext
     #print (url)
